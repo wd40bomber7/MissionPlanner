@@ -98,6 +98,19 @@
             this.BUT_abort_script = new ArdupilotMega.Controls.MyButton();
             this.labelScriptStatus = new System.Windows.Forms.Label();
             this.BUT_select_script = new ArdupilotMega.Controls.MyButton();
+            this.tabCamera = new System.Windows.Forms.TabPage();
+            this.channelNumberTextbox = new System.Windows.Forms.TextBox();
+            this.enableSelectorCheck = new System.Windows.Forms.CheckBox();
+            this.setChannelButton = new System.Windows.Forms.Button();
+            this.currentChannelLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelTimeSwitch = new System.Windows.Forms.Label();
+            this.textTimeToSwitch = new System.Windows.Forms.TextBox();
+            this.radioCamCycle = new System.Windows.Forms.RadioButton();
+            this.radioCam3 = new System.Windows.Forms.RadioButton();
+            this.radioCam2 = new System.Windows.Forms.RadioButton();
+            this.radioCam1 = new System.Windows.Forms.RadioButton();
             this.tableMap = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.zg1 = new ZedGraph.ZedGraphControl();
@@ -144,6 +157,8 @@
             this.panel2.SuspendLayout();
             this.tablogbrowse.SuspendLayout();
             this.tabScripts.SuspendLayout();
+            this.tabCamera.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tableMap.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -350,6 +365,7 @@
             this.tabControl1.Controls.Add(this.tabTLogs);
             this.tabControl1.Controls.Add(this.tablogbrowse);
             this.tabControl1.Controls.Add(this.tabScripts);
+            this.tabControl1.Controls.Add(this.tabCamera);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1463,6 +1479,100 @@
             this.BUT_select_script.UseVisualStyleBackColor = true;
             this.BUT_select_script.Click += new System.EventHandler(this.BUT_select_script_Click);
             // 
+            // tabCamera
+            // 
+            this.tabCamera.Controls.Add(this.channelNumberTextbox);
+            this.tabCamera.Controls.Add(this.enableSelectorCheck);
+            this.tabCamera.Controls.Add(this.setChannelButton);
+            this.tabCamera.Controls.Add(this.currentChannelLabel);
+            this.tabCamera.Controls.Add(this.label3);
+            this.tabCamera.Controls.Add(this.groupBox1);
+            resources.ApplyResources(this.tabCamera, "tabCamera");
+            this.tabCamera.Name = "tabCamera";
+            this.tabCamera.UseVisualStyleBackColor = true;
+            // 
+            // channelNumberTextbox
+            // 
+            resources.ApplyResources(this.channelNumberTextbox, "channelNumberTextbox");
+            this.channelNumberTextbox.Name = "channelNumberTextbox";
+            // 
+            // enableSelectorCheck
+            // 
+            resources.ApplyResources(this.enableSelectorCheck, "enableSelectorCheck");
+            this.enableSelectorCheck.Name = "enableSelectorCheck";
+            this.enableSelectorCheck.UseVisualStyleBackColor = true;
+            this.enableSelectorCheck.CheckedChanged += new System.EventHandler(this.enableSelectorCheck_CheckedChanged);
+            // 
+            // setChannelButton
+            // 
+            resources.ApplyResources(this.setChannelButton, "setChannelButton");
+            this.setChannelButton.Name = "setChannelButton";
+            this.setChannelButton.UseVisualStyleBackColor = true;
+            this.setChannelButton.Click += new System.EventHandler(this.setChannelButton_Click);
+            // 
+            // currentChannelLabel
+            // 
+            resources.ApplyResources(this.currentChannelLabel, "currentChannelLabel");
+            this.currentChannelLabel.Name = "currentChannelLabel";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.labelTimeSwitch);
+            this.groupBox1.Controls.Add(this.textTimeToSwitch);
+            this.groupBox1.Controls.Add(this.radioCamCycle);
+            this.groupBox1.Controls.Add(this.radioCam3);
+            this.groupBox1.Controls.Add(this.radioCam2);
+            this.groupBox1.Controls.Add(this.radioCam1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // labelTimeSwitch
+            // 
+            resources.ApplyResources(this.labelTimeSwitch, "labelTimeSwitch");
+            this.labelTimeSwitch.Name = "labelTimeSwitch";
+            // 
+            // textTimeToSwitch
+            // 
+            resources.ApplyResources(this.textTimeToSwitch, "textTimeToSwitch");
+            this.textTimeToSwitch.Name = "textTimeToSwitch";
+            this.textTimeToSwitch.TextChanged += new System.EventHandler(this.textTimeToSwitch_TextChanged);
+            // 
+            // radioCamCycle
+            // 
+            resources.ApplyResources(this.radioCamCycle, "radioCamCycle");
+            this.radioCamCycle.Name = "radioCamCycle";
+            this.radioCamCycle.UseVisualStyleBackColor = true;
+            this.radioCamCycle.CheckedChanged += new System.EventHandler(this.radioCamCycle_CheckedChanged);
+            // 
+            // radioCam3
+            // 
+            resources.ApplyResources(this.radioCam3, "radioCam3");
+            this.radioCam3.Name = "radioCam3";
+            this.radioCam3.UseVisualStyleBackColor = true;
+            this.radioCam3.CheckedChanged += new System.EventHandler(this.radioCam3_CheckedChanged);
+            // 
+            // radioCam2
+            // 
+            resources.ApplyResources(this.radioCam2, "radioCam2");
+            this.radioCam2.Name = "radioCam2";
+            this.radioCam2.UseVisualStyleBackColor = true;
+            this.radioCam2.CheckedChanged += new System.EventHandler(this.radioCam2_CheckedChanged);
+            // 
+            // radioCam1
+            // 
+            resources.ApplyResources(this.radioCam1, "radioCam1");
+            this.radioCam1.Checked = true;
+            this.radioCam1.Name = "radioCam1";
+            this.radioCam1.TabStop = true;
+            this.radioCam1.UseVisualStyleBackColor = true;
+            this.radioCam1.CheckedChanged += new System.EventHandler(this.radioCam1_CheckedChanged);
+            // 
             // tableMap
             // 
             resources.ApplyResources(this.tableMap, "tableMap");
@@ -1730,6 +1840,10 @@
             this.tablogbrowse.ResumeLayout(false);
             this.tabScripts.ResumeLayout(false);
             this.tabScripts.PerformLayout();
+            this.tabCamera.ResumeLayout(false);
+            this.tabCamera.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tableMap.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -1855,6 +1969,19 @@
         private System.Windows.Forms.OpenFileDialog openScriptDialog;
         private System.Windows.Forms.Timer scriptChecker;
         private System.Windows.Forms.CheckBox checkBoxRedirectOutput;
+        private System.Windows.Forms.TabPage tabCamera;
+        private System.Windows.Forms.CheckBox enableSelectorCheck;
+        private System.Windows.Forms.Button setChannelButton;
+        private System.Windows.Forms.Label currentChannelLabel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labelTimeSwitch;
+        private System.Windows.Forms.TextBox textTimeToSwitch;
+        private System.Windows.Forms.RadioButton radioCamCycle;
+        private System.Windows.Forms.RadioButton radioCam3;
+        private System.Windows.Forms.RadioButton radioCam2;
+        private System.Windows.Forms.RadioButton radioCam1;
+        private System.Windows.Forms.TextBox channelNumberTextbox;
 
     }
 }

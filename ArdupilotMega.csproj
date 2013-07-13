@@ -245,6 +245,7 @@
     </Compile>
     <Compile Include="Attributes\DisplayTextAttribute.cs" />
     <Compile Include="Attributes\PrivateAttribute.cs" />
+    <Compile Include="CameraSelectorSettings.cs" />
     <Compile Include="CodeGen.cs" />
     <Compile Include="Comms\CommsFile.cs" />
     <Compile Include="Comms\CommsSerialScan.cs" />

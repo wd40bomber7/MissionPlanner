@@ -2830,5 +2830,88 @@ print 'Roll complete'
             catch { }
         }
 
+        private void radioCam1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioCam1.Checked)
+                MainV2.cameraSelection.selected = CameraSelectorSettings.Selection.Left;
+        }
+
+        private void radioCam2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioCam2.Checked)
+                MainV2.cameraSelection.selected = CameraSelectorSettings.Selection.Center;
+        }
+
+        private void radioCam3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioCamCycle.Checked)
+                MainV2.cameraSelection.selected = CameraSelectorSettings.Selection.Cycle;
+            labelTimeSwitch.Visible = textTimeToSwitch.Visible = radioCamCycle.Checked;
+        }
+
+        private void radioCamCycle_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioCamCycle.Checked)
+                MainV2.cameraSelection.selected = CameraSelectorSettings.Selection.Cycle;
+            labelTimeSwitch.Visible = textTimeToSwitch.Visible = radioCamCycle.Checked;
+        }
+
+        private void textTimeToSwitch_TextChanged(object sender, EventArgs e)
+        {
+            bool valid = double.TryParse(textTimeToSwitch.Text, out MainV2.cameraSelection.cycleTime);
+            //Save the default backcolor
+            if (textTimeToSwitch.Tag == null)
+                textTimeToSwitch.Tag = textTimeToSwitch.BackColor;
+            textTimeToSwitch.BackColor = valid ? (Color)textTimeToSwitch.Tag : Color.Red;
+        }
+
+        private void setChannelButton_Click(object sender, EventArgs e)
+        {
+            bool valid = int.TryParse(channelNumberTextbox.Text, out MainV2.cameraSelection.channelNumber);
+            //Negative numbers are obviously invalid
+            if (MainV2.cameraSelection.channelNumber < 0)
+                valid = false;
+
+            if (!valid)
+            {
+                MainV2.cameraSelection.channelNumber = -1;
+                currentChannelLabel.Text = "Current Channel -";
+                MessageBox.Show("Invalid channel number entered. Please try again.");
+                return;
+            }
+            else
+            {
+                currentChannelLabel.Text = "Current Channel " + MainV2.cameraSelection.channelNumber;
+            }
+        }
+
+        private void enableSelectorCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (enableSelectorCheck.Checked)
+            {
+                if (MainV2.cameraSelection.channelNumber < 0)
+                {
+                    MessageBox.Show("You must set a channel number first.");
+                    enableSelectorCheck.Checked = false;
+                    return;
+                }
+                //Load all the current settings
+                if (radioCam1.Checked)
+                    MainV2.cameraSelection.selected = CameraSelectorSettings.Selection.Left;
+                else if (radioCam2.Checked)
+                    MainV2.cameraSelection.selected = CameraSelectorSettings.Selection.Center;
+                else if (radioCam3.Checked)
+                    MainV2.cameraSelection.selected = CameraSelectorSettings.Selection.Right;
+                else if (radioCamCycle.Checked)
+                    MainV2.cameraSelection.selected = CameraSelectorSettings.Selection.Cycle;
+
+                //If this fails its ok because at least one previous valid configuration will
+                //already have been loaded
+                double.TryParse(textTimeToSwitch.Text, out MainV2.cameraSelection.cycleTime);
+            }
+
+            MainV2.cameraSelection.enabled = enableSelectorCheck.Checked;
+        }
+
     }
 }
